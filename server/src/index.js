@@ -3,12 +3,14 @@ const app = express()
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 
-http.get('/', function (req, res) {
+const port = 12345
+
+app.get('/', function (req, res) {
   res.send('Hello Lauzhack!')
 })
 
-http.listen(12345, function () {
-  console.log('Running on 3000')
+app.listen(port, function () {
+  console.log('Running on ' + port)
 })
 
 io.on('connection', function(socket){
