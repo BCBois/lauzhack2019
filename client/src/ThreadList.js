@@ -6,17 +6,23 @@ import ThreadCreator from './ThreadCreator'
 function ThreadList(props) {
     const threadList = props.threadList
     const socket = props.socket
+    const toCreator = props.toCreator
+    const toThread = props.toThread
 
-    const a = threadList.map(thread => <p>thread.title</p>)
+    const threadTable = threadList.map(thread => 
+    <div id="thread_entry">
+         <p>thread.title</p> 
+         <button onClick={toThread(thread.id)}>
+                Open thread
+        </button>
+    </div>)
 
     return (
         <div id="view">
             <div id="thread_list">
-            {a}
+            {threadTable}
             </div>
-            <button onClick={() => {
-                ...
-            }}>
+            <button onClick={toCreator}>
                 Create thread
             </button>
         </div>

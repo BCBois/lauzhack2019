@@ -37,7 +37,7 @@ function App() {
       {() => {
         switch(view) {
           case "threadlist":
-              return <ThreadList threadList={threadList} socket={socket} />
+              return <ThreadList threadList={threadList} socket={socket} toThread={(threadId) => {setView("thread"); setThreadId(threadId)}} toCreator={() => setView("threadcreator")} />
             case "thread":
                 return <Thread thread={threadList[threadId]} socket={socket} back={() => setView("threadlist")} />
             case "threadcreator":
