@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ReactModal from 'react-modal'
 
 import ThreadCreator from './ThreadCreator'
@@ -9,18 +9,19 @@ function ThreadList(props) {
     const toCreator = props.toCreator
     const toThread = props.toThread
 
-    const threadTable = threadList.map(thread => 
-    <div id="thread_entry">
-         <p>{thread.title}</p> 
-         <button onClick={() => toThread(thread.id)}>
-                Open thread
+    const threadTable = threadList.map(thread =>
+        <div className="thread_entry">
+<p class="author">Created by {thread.messages[0].author} the {thread.messages[0].date}</p>
+            <p>{thread.title}</p>
+            <button onClick={() => toThread(thread.id)}>
+                Read
         </button>
-    </div>)
+        </div>)
 
     return (
         <div id="view">
             <div id="thread_list">
-            {threadTable}
+                {threadTable}
             </div>
             <button onClick={toCreator}>
                 Create thread

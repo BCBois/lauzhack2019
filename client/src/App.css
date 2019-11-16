@@ -1,12 +1,40 @@
 html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background: #eee;
 }
 
+#thread_list {
+  padding: 20px;
+}
+
+.thread_entry {
+  background: #fff;
+  width: 100%;
+  float: left;
+  padding: 15px;
+  box-shadow: 0 0 3px #bbb;
+  box-sizing: border-box;
+}
+
+.thread_entry p {
+}
+
+.thread_entry button {
+  float: right;
+  border: none;
+  background: #03a1fc;
+  color: white;
+  padding: 10px;
+}
 
 
