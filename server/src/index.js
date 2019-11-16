@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
   res.send('Hello Lauzhack!')
 })
 
-app.listen(port, function () {
+http.listen(port, function () {
   console.log('Running on ' + port)
 })
 
