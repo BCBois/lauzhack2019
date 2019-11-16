@@ -4,7 +4,7 @@ function Thread(props) {
     const thread = props.thread
     const socket = props.socket
 
-    const msgList = thread.messages.map(msg => <p>msg.content</p>)
+    const msgList = thread.messages.map(msg => <p>{msg.content}</p>)
 
     const [content, setContent] = useState("")
     const [author, setAuthor] = useState("")
@@ -32,3 +32,5 @@ function Thread(props) {
         </div>
     )
 }
+
+export default Thread

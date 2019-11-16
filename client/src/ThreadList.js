@@ -11,8 +11,8 @@ function ThreadList(props) {
 
     const threadTable = threadList.map(thread => 
     <div id="thread_entry">
-         <p>thread.title</p> 
-         <button onClick={toThread(thread.id)}>
+         <p>{thread.title}</p> 
+         <button onClick={() => toThread(thread.id)}>
                 Open thread
         </button>
     </div>)
@@ -28,3 +28,5 @@ function ThreadList(props) {
         </div>
     )
 }
+
+export default ThreadList

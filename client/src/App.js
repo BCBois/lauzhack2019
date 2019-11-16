@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import openSocket from 'socket.io-client'
 
 import './App.css';
@@ -6,12 +6,15 @@ import Thread from './Thread'
 import ThreadList from './ThreadList'
 import ThreadCreator from './ThreadCreator'
 
-const socket = openSocket('http://192.168.43.55:12345/');
+const socket = openSocket('http://localhost:12345/');
 
 function App() {
   const [view, setView] = useState("threadlist")
   const [threadId, setThreadId] = useState("")
-  const [threadList, setThreadList] = useState([]) // TODO : load initial thread list
+  const [threadList, setThreadList] = useState([])
+  socket.emit('get_all_threads', (data) => {
+    setThreadList(data)
+  })
   socket.on('notify_new_thread', (thread) => {
     setThreadList([...threadList, thread])
   })
@@ -20,10 +23,10 @@ function App() {
     const msg = o.msg
     setThreadList(
       threadList.map(thread => {
-        if(thread.id === threadId) {
+        if (thread.id === threadId) {
           return {
             ...thread,
-            msgs: [...thread.msgs, msg]
+            messages: [...thread.messages, msg]
           }
         } else {
           return thread
@@ -32,20 +35,26 @@ function App() {
     )
   })
 
+  var inner
+  switch (view) {
+    case "threadlist":
+      inner = <ThreadList threadList={threadList} socket={socket} toThread={(threadId) => { setView("thread"); setThreadId(threadId) }} toCreator={() => setView("threadcreator")} />
+      break;
+    case "thread":
+      inner = <Thread thread={threadList.filter(t => t.id === threadId)[0]} socket={socket} back={() => setView("threadlist")} />
+      break;
+    case "threadcreator":
+      inner = <ThreadCreator socket={socket} back={() => setView("threadlist")} />
+      break;
+    default:
+      inner = <p>Error : Wrong view name selected</p>
+      break;
+  }
+
   return (
     <div className="App">
-      {() => {
-        switch(view) {
-          case "threadlist":
-              return <ThreadList threadList={threadList} socket={socket} toThread={(threadId) => {setView("thread"); setThreadId(threadId)}} toCreator={() => setView("threadcreator")} />
-            case "thread":
-                return <Thread thread={threadList[threadId]} socket={socket} back={() => setView("threadlist")} />
-            case "threadcreator":
-                return <ThreadCreator socket={socket} back={() => setView("threadlist")} />
-          default:
-            return <p>Error : Wrong view name selected</p>
-        }
-      }}
+      <p>{view}</p>
+      {inner}
     </div>
   )
 }

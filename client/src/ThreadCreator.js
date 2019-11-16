@@ -20,7 +20,7 @@ function ThreadCreator(props) {
                 <textarea onChange={event => setContent(event.target.value)}></textarea>
             </div>
             <button onClick={() => {
-                socket.emit('create_thread', {title: title, msgs: [{author: author, content: content, type: "msg"}]})
+                socket.emit('create_thread', {title: title, messages: [{author: author, content: content, type: "msg"}]})
                 // TODO : tags
                 back()
             }}>
@@ -33,3 +33,5 @@ function ThreadCreator(props) {
         </div>
     )
 }
+
+export default ThreadCreator
