@@ -1,22 +1,27 @@
-.App {
-  text-align: center;
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
+#messages_list {
+  width: 100vw;
+  height: 80vw;
+  background-color: #ccc;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#textbox {
+  width: 100vw;
+  height: 20vw;
 }
 
-.App-link {
-  color: #09d3ac;
+.textinput {
+  width: 60vw;
+}
+
+button {
+  float: right;
+  display: block;
+  width: 20%;
+  height: 100%;
 }

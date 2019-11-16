@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import openSocket from 'socket.io-client'
+
+const socket = openSocket('http://192.168.43.55:12345/');
 
 function App() {
+  const [text, setText] = useState("")
+  const [messages, setMessages] = useState([])
+  socket.on('chat_message', (msg) => setMessages([...messages, msg]))
+
+  const list = messages.map(m => <p>{m}</p>)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div id="messages_list">
+        {list}
+      </div>
+      <div id="textbox">
+        <div className="textinput">
+          <textarea onChange={event => setText(event.target.value)}></textarea>
+        </div>
+        <button onClick={() => {
+          socket.emit('chat_message', text)
+        }}>
+          Send
+        </button>
+      </div>
     </div>
   );
 }
