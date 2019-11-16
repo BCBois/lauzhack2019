@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+    <script>
+        const socket = io()
+        socket.on('notify_new_thread', thread => {
+            console.log("New Thread Notification:")
+            console.log(thread)
+        })
+        socket.on('notify_new_msg', (threadID, message) => {
+            console.log("New Message from thread " + threadID + " :")
+            console.log(message)
+        })
+        socket.emit('create_thread', {
+            id: "1",
+            name: "shiny new thread",
+            messages: [],
+            parentID: null,
+            tags: ['hello']
+        })
+        socket.emit('create_msg', "1", {
+            authorId: "me",
+            content: "hello",
+            type: "msg"
+        })
+        socket.emit('get_all_threads', answer => {
+            console.log("All threads:")
+            console.log(answer)
+        })
+    </script>
+</head>
+
+<body>Test2</body>
+
+</html>
