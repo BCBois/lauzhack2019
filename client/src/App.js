@@ -20,9 +20,7 @@ function App() {
     socket.on('notify_new_thread', (thread) => {
       setThreadList(prev => [...prev, thread])
     })
-    socket.on('notify_new_msg', (o) => {
-      const threadId = o.threadId
-      const msg = o.msg
+    socket.on('notify_new_msg', (threadId, msg) => {
       setThreadList(prev =>
         prev.map(thread => {
           if (thread.id === threadId) {
