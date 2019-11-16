@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
-import ReactModal from 'react-modal'
-
-import ThreadCreator from './ThreadCreator'
+import React from 'react';
 
 function ThreadList(props) {
     const threadList = props.threadList
-    const socket = props.socket
     const toCreator = props.toCreator
     const toThread = props.toThread
 

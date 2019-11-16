@@ -41,7 +41,7 @@ function App() {
   var inner
   switch (view) {
     case "threadlist":
-      inner = <ThreadList threadList={threadList} socket={socket} toThread={(threadId) => { setThreadId(threadId); setView("thread") }} toCreator={() => setView("threadcreator")} />
+      inner = <ThreadList threadList={threadList} toThread={(threadId) => { setThreadId(threadId); setView("thread") }} toCreator={() => setView("threadcreator")} />
       break;
     case "thread":
       inner = <Thread thread={threadList.filter(t => t.id === threadId)[0]} socket={socket} back={() => setView("threadlist")} />
