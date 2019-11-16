@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 function Thread(props) {
     const thread = props.thread
     const socket = props.socket
+    const back = props.back
 
     const msgList = thread.messages.map(msg => <p>{msg.content}</p>)
 
@@ -11,6 +12,9 @@ function Thread(props) {
 
     return (
         <div id="view">
+            <button onClick={back}>
+                Back
+            </button>
             <div id="messages_list">
             {msgList}
             </div>
