@@ -25,11 +25,11 @@ function Thread(props) {
                 <textarea onChange={event => setContent(event.target.value)}></textarea>
             </div>
             <button onClick={() => {
-                socket.emit('create_msg', {threadId: thread.id, msg: {
+                socket.emit('create_msg', thread.id, {
                     author: author,
                     content: content,
                     type: "msg"
-                }})
+                })
             }}>
                 Send
             </button>
