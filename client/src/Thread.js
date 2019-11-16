@@ -5,7 +5,7 @@ function Thread(props) {
     const socket = props.socket
     const back = props.back
 
-    const msgList = thread.messages.map(msg => <p>{msg.content}</p>)
+    const msgList = thread.messages.map(msg => <p>{msg.author} at {msg.date}:<br/>{msg.content}</p>)
 
     const [content, setContent] = useState("")
     const [author, setAuthor] = useState("")
@@ -28,7 +28,8 @@ function Thread(props) {
                 socket.emit('create_msg', thread.id, {
                     author: author,
                     content: content,
-                    type: "msg"
+                    type: "msg",
+                    date: new Date().toDateString()
                 })
             }}>
                 Send
