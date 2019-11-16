@@ -4,24 +4,9 @@ html, body {
   box-sizing: border-box;
 }
 
-#messages_list {
-  width: 100vw;
-  height: 80vw;
-  background-color: #ccc;
+body {
+  background: #eee;
 }
 
-#textbox {
-  width: 100vw;
-  height: 20vw;
-}
 
-.textinput {
-  width: 60vw;
-}
 
-button {
-  float: right;
-  display: block;
-  width: 20%;
-  height: 100%;
-}
