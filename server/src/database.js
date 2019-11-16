@@ -1,6 +1,7 @@
 const fs = require('fs')
 
 const state = []
+var tid = 0
 
 module.exports = {
     getAllThreads: () => {
@@ -10,6 +11,8 @@ module.exports = {
     },
 
     createThread: (thread) => {
+        thread.id = tid
+        tid += 1
         state.push(thread)
     },
 
