@@ -5,8 +5,12 @@ function Thread(props) {
     const socket = props.socket
     const back = props.back
     const subthread = props.subthread
+    const toThread = props.toThread
 
-    const msgList = thread.messages.map(msg => <p>{msg.author} at {msg.date}:<br/>{msg.content}</p>)
+    const msgList = thread.messages.map(msg => msg.type === "msg" ?
+        <p>{msg.author} at {msg.date}:<br/>{msg.content}</p> :
+        <button onClick={() => toThread(msg.content)}>Go to subthread</button>
+    )
 
     const [content, setContent] = useState("")
     const [author, setAuthor] = useState("")
