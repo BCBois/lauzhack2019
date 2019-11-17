@@ -5,7 +5,7 @@ function ThreadList(props) {
     const toCreator = props.toCreator
     const toThread = props.toThread
 
-    const threadTable = threadList.map(thread =>
+    var threadTable = threadList.map(thread =>
         <div className="thread_entry">
             <p class="author">Created by {thread.messages[0].author} the {thread.messages[0].date}</p>
             <p>{thread.title}</p>
@@ -15,14 +15,17 @@ function ThreadList(props) {
         </div>
     )
 
+    if (threadTable.length == 0) threadTable = <p class="no-threads">No threads yet</p>
+
     return (
         <div id="view">
             <div id="thread_list">
                 {threadTable}
+
+                <button onClick={toCreator}>
+                    Create thread
+                </button>
             </div>
-            <button onClick={toCreator}>
-                Create thread
-            </button>
         </div>
     )
 }

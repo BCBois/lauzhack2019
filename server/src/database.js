@@ -3,6 +3,14 @@ const fs = require('fs')
 const state = []
 var tid = 0
 
+function save() {
+    fs.writeFileSync('db.json', JSON.stringify(state))
+}
+
+function load() {
+    return require('./db.json')
+}
+
 module.exports = {
     getAllThreads: () => {
         return new Promise((resolve, reject) => {
