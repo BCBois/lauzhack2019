@@ -24,7 +24,12 @@ function ThreadCreator(props) {
                 Back
             </button>
             <button onClick={() => {
-                socket.emit('create_thread', {title: title, parentId: parentId, messages: [{author: author, content: content, type: "msg", date: new Date().toDateString()}]})
+                const threadId = Math.random()
+                const date = new Date().toDateString()
+                socket.emit('create_thread', {id: threadId, title: title, parentId: parentId, messages: [{author: author, content: content, type: "msg", date: date}]})
+                if(parentId != null) {
+                    socket.emit('create_msg', parentId, {author: author, content: threadId, type: "thread", date: date})
+                }
                 // TODO : tags
                 back()
             }}>

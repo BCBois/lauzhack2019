@@ -40,10 +40,10 @@ function Chat() {
       inner = <ThreadList threadList={threadList} toThread={(threadId) => { setThreadId(threadId); setView("thread") }} toCreator={() => { setThreadId(null); setView("threadcreator") }} />
       break;
     case "thread":
-      inner = <Thread thread={threadList.filter(t => t.id === threadId)[0]} parentId={threadId} socket={socket} back={() => setView("threadlist")} subthread={() => setView("threadcreator")} />
+      inner = <Thread thread={threadList.filter(t => t.id === threadId)[0]} socket={socket} back={() => setView("threadlist")} subthread={() => setView("threadcreator")} toThread={(threadId) => { setThreadId(threadId); setView("thread") }} />
       break;
     case "threadcreator":
-      inner = <ThreadCreator socket={socket} back={() => setView("threadlist")} />
+      inner = <ThreadCreator socket={socket} parentId={threadId} back={() => setView("threadlist")} />
       break;
     default:
       inner = <p>Error : Wrong view name selected</p>
