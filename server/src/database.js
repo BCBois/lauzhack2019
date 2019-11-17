@@ -3,7 +3,7 @@ const fs = require('fs')
 const state = []
 
 function save() {
-    fs.writeFileSync('db.json', JSON.stringify(state))
+    fs.writeFile('db.json', JSON.stringify(state))
 }
 
 function load() {
@@ -19,6 +19,7 @@ module.exports = {
 
     createThread: (thread) => {
         state.push(thread)
+        save()
     },
 
     createMessage: (threadID, msg) => {

@@ -4,7 +4,7 @@ import Thread from './Thread'
 import ThreadList from './ThreadList'
 import ThreadCreator from './ThreadCreator'
 
-const socket = openSocket('http://localhost:12345/');
+const socket = openSocket('http://192.168.43.131:12345/');
 
 function Chat() {
   const [view, setView] = useState("threadlist")
