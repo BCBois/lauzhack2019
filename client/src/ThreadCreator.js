@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 function ThreadCreator(props) {
     const socket = props.socket
     const back = props.back
+    const parentId = props.parentId
 
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
@@ -20,13 +21,13 @@ function ThreadCreator(props) {
                 <textarea onChange={event => setContent(event.target.value)}></textarea>
             </div>
             <button onClick={() => {
-                socket.emit('create_thread', {title: title, messages: [{author: author, content: content, type: "msg", date: new Date().toDateString()}]})
+                socket.emit('create_thread', {title: title, parentId: parentId, messages: [{author: author, content: content, type: "msg", date: new Date().toDateString()}]})
                 // TODO : tags
                 back()
             }}>
                 Create thread
             </button>
-            <button onClick={() => {back()}}>
+            <button onClick={back}>
                 Back
             </button>
 

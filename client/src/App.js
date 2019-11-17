@@ -20,9 +20,7 @@ function App() {
     socket.on('notify_new_thread', (thread) => {
       setThreadList(prev => [...prev, thread])
     })
-    socket.on('notify_new_msg', (o) => {
-      const threadId = o.threadId
-      const msg = o.msg
+    socket.on('notify_new_msg', (threadId, msg) => {
       setThreadList(prev =>
         prev.map(thread => {
           if (thread.id === threadId) {
@@ -41,10 +39,10 @@ function App() {
   var inner
   switch (view) {
     case "threadlist":
-      inner = <ThreadList threadList={threadList} toThread={(threadId) => { setThreadId(threadId); setView("thread") }} toCreator={() => setView("threadcreator")} />
+      inner = <ThreadList threadList={threadList} toThread={(threadId) => { setThreadId(threadId); setView("thread") }} toCreator={() => {setThreadId(null); setView("threadcreator")}} />
       break;
     case "thread":
-      inner = <Thread thread={threadList.filter(t => t.id === threadId)[0]} socket={socket} back={() => setView("threadlist")} />
+      inner = <Thread thread={threadList.filter(t => t.id === threadId)[0]} parentId={threadId} socket={socket} back={() => setView("threadlist")} subthread={() => setView("threadcreator")} />
       break;
     case "threadcreator":
       inner = <ThreadCreator socket={socket} back={() => setView("threadlist")} />

@@ -7,12 +7,13 @@ function ThreadList(props) {
 
     const threadTable = threadList.map(thread =>
         <div className="thread_entry">
-<p class="author">Created by {thread.messages[0].author} the {thread.messages[0].date}</p>
+            <p class="author">Created by {thread.messages[0].author} the {thread.messages[0].date}</p>
             <p>{thread.title}</p>
             <button onClick={() => toThread(thread.id)}>
                 Read
-        </button>
-        </div>)
+            </button>
+        </div>
+    )
 
     return (
         <div id="view">
