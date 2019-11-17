@@ -4,6 +4,7 @@ function Thread(props) {
     const thread = props.thread
     const socket = props.socket
     const back = props.back
+    const subthread = props.subthread
 
     const msgList = thread.messages.map(msg => <p>{msg.author} at {msg.date}:<br/>{msg.content}</p>)
 
@@ -16,7 +17,7 @@ function Thread(props) {
                 Back
             </button>
             <div id="messages_list">
-            {msgList}
+                {msgList}
             </div>
             <div className="authorInput">
                 <textarea onChange={event => setAuthor(event.target.value)}></textarea>
@@ -33,6 +34,9 @@ function Thread(props) {
                 })
             }}>
                 Send
+            </button>
+            <button onClick={subthread}>
+                Create subthread
             </button>
         </div>
     )
