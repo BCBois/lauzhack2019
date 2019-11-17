@@ -1,13 +1,13 @@
 const fs = require('fs')
 
-const state = []
+const state = load()
 
 function save() {
     fs.writeFile('db.json', JSON.stringify(state), (err) => { console.log("save error") })
 }
 
 function load() {
-    return require('./db.json')
+    return require('../db.json')
 }
 
 module.exports = {
