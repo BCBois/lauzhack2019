@@ -45,6 +45,7 @@ button {
   width: calc(100vw - 100px);
   height: calc(100vh);
   background: #eee;
+  overflow-y: scroll;
 }
 
 #thread_list {
