@@ -42,7 +42,7 @@ button {
 
 .main {
   float: left;
-  width: calc(100vw - 80px);
+  width: calc(100vw - 100px);
   height: calc(100vh);
   background: #eee;
 }

@@ -3,7 +3,7 @@ const fs = require('fs')
 const state = []
 
 function save() {
-    fs.writeFile('db.json', JSON.stringify(state))
+    fs.writeFile('db.json', JSON.stringify(state), (err) => { console.log("save error") })
 }
 
 function load() {
