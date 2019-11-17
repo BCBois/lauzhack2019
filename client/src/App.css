@@ -15,7 +15,7 @@ button {
   color: white;
   padding: 10px;
   box-shadow: 0 0 10px #bbb;
-  margin: 20px;
+  margin: 20px 5px;
 }
 
 .App {
@@ -38,8 +38,8 @@ button {
 
 .main {
   float: left;
-  width: calc(100vw - 100px);
-  height: calc(100vh - 20px);
+  width: calc(100vw - 80px);
+  height: calc(100vh);
   background: #eee;
 }
 
@@ -50,6 +50,24 @@ button {
 
 .no-threads {
   margin-top: 100px;
+}
+
+#thread_creator {
+  margin: 20px;
+  padding: 20px;
+  width: calc(100%-40px);
+  background: #fff;
+  box-shadow: 0 0 5px #bbb;
+}
+
+#thread_creator textarea {
+  width: calc(100% - 30px);
+  padding: 10px;
+  margin: 5px;
+}
+
+#thread_creator .contentInput textarea {
+  min-height: 200px;
 }
 
 .thread_entry {

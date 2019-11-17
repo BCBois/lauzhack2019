@@ -12,23 +12,23 @@ function ThreadCreator(props) {
     return (
         <div id="thread_creator">
             <div className="titleInput">
-                <textarea onChange={event => setTitle(event.target.value)}></textarea>
+                <textarea onChange={event => setTitle(event.target.value)} placeholder="Title"></textarea>
             </div>
             <div className="authorInput">
-                <textarea onChange={event => setAuthor(event.target.value)}></textarea>
+                <textarea onChange={event => setAuthor(event.target.value)} placeholder="Nickname"></textarea>
             </div>
             <div className="contentInput">
-                <textarea onChange={event => setContent(event.target.value)}></textarea>
+                <textarea onChange={event => setContent(event.target.value)} placeholder="Content"></textarea>
             </div>
+            <button onClick={back}>
+                Back
+            </button>
             <button onClick={() => {
                 socket.emit('create_thread', {title: title, parentId: parentId, messages: [{author: author, content: content, type: "msg", date: new Date().toDateString()}]})
                 // TODO : tags
                 back()
             }}>
                 Create thread
-            </button>
-            <button onClick={back}>
-                Back
             </button>
 
         </div>
