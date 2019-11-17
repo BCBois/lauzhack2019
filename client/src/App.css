@@ -15,7 +15,11 @@ button {
   color: white;
   padding: 10px;
   box-shadow: 0 0 10px #bbb;
-  margin: 20px 5px;
+  margin: 5px 5px 0 5px;
+}
+
+.back {
+  margin-bottom: 20px;
 }
 
 .App {
@@ -60,7 +64,7 @@ button {
   box-shadow: 0 0 5px #bbb;
 }
 
-#thread_creator textarea {
+textarea {
   width: calc(100% - 30px);
   padding: 10px;
   margin: 5px;
@@ -70,20 +74,43 @@ button {
   min-height: 200px;
 }
 
-.thread_entry {
+.thread_entry, .post {
   background: #fff;
   width: 100%;
   float: left;
   padding: 15px;
   box-shadow: 0 0 3px #bbb;
   box-sizing: border-box;
+  margin-bottom: 15px;
+  text-align: left;
 }
 
-.thread_entry p {
+.author {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-weight: bold;
 }
 
 .thread_entry button {
   float: right;
 }
 
+#thread_view {
+  padding: 20px;
+}
+
+.reply_box {
+  background: #ccc;
+  float: left;
+  width: calc(100% - 20px);
+  padding: 10px;
+}
+
+.reply_box .contentInput textarea {
+  min-height: 100px;
+}
 

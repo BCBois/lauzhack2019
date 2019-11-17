@@ -1,7 +1,6 @@
 const fs = require('fs')
 
 const state = []
-var tid = 0
 
 function save() {
     fs.writeFileSync('db.json', JSON.stringify(state))
@@ -19,8 +18,6 @@ module.exports = {
     },
 
     createThread: (thread) => {
-        thread.id = tid
-        tid += 1
         state.push(thread)
     },
 
